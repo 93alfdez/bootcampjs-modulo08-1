@@ -77,38 +77,63 @@ export const pacientes: Pacientes[] = [
 //  Apartado 1
 
 //  a) Queremos extraer la lista de paciente que están asignados a la especialidad de Pediatría
+// let pacientesPediatra: Pacientes[] = [];
 
-const obtenPacientesAsignadosAPediatria = (
-    pacientes: Pacientes[]
-): Pacientes[] => {
+// const obtenPacientesAsignadosAPediatria = (
+//     pacientes: Pacientes[]
+// ): Pacientes[] => {
 
-    let pacientesPediatra: Pacientes[] = [];
+//     for (let i = 0; i < pacientes.length; i++) {
+//         if (pacientes[i].especialidad === "Pediatra") {
+//             pacientesPediatra.push(pacientes[i]);
+//         }
+//     }
 
-    for (let i = 0; i < pacientes.length; i++) {
-        if (pacientes[i].especialidad === "Pediatra") {
-            pacientesPediatra.push(pacientes[i]);
-        }
-    }
+//     return pacientesPediatra;
+// };
 
-    return pacientesPediatra;
-};
-
-console.log(obtenPacientesAsignadosAPediatria(pacientes))
+// console.log(obtenPacientesAsignadosAPediatria(pacientes));
+// console.log(pacientesPediatra)
 
 // b) Queremos extraer la lista de pacientes asignados a Pediatría y que tengan una edad menor de 10 años.
 
-const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (
-    pacientes: Pacientes[]
-): Pacientes[] => {
-    let pacientesPediatraMenorDiezAnios: Pacientes[] = [];
+// const obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios = (
+//     pacientes: Pacientes[]
+// ): Pacientes[] => {
+//     let pacientesPediatraMenorDiezAnios: Pacientes[] = [];
+
+//     for (let i = 0; i < pacientes.length; i++) {
+//         if (pacientes[i].especialidad === "Pediatra" && pacientes[i].edad < 10) {
+//             pacientesPediatraMenorDiezAnios.push(pacientes[i]);
+//         }
+//     }
+
+//     return pacientesPediatraMenorDiezAnios;
+// };
+
+// console.log(obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios(pacientes))
+
+
+/* Apartado 2
+
+Queremos activar el protocolo de urgencia si cualquier de los pacientes tiene un ritmo cardíaco superior a 100 pulsaciones por minuto y una temperatura corporal superior a 39 grados.
+
+Es decir, crear una función que devuelve true / false dependiendo si se da la condición, algo así como: */
+
+let pacientesProtocoloUrgencia: Pacientes[] = [];
+
+const activarProtocoloUrgencia = (pacientes: Pacientes[]): boolean => {
+    let activarProtocolo = false;
 
     for (let i = 0; i < pacientes.length; i++) {
-        if (pacientes[i].especialidad === "Pediatra" && pacientes[i].edad < 10) {
-            pacientesPediatraMenorDiezAnios.push(pacientes[i]);
+        if (pacientes[i].frecuenciaCardiaca > 100 && pacientes[i].temperatura > 39) {
+            pacientesProtocoloUrgencia.push(pacientes[i]);
+            activarProtocolo = true;
         }
     }
 
-    return pacientesPediatraMenorDiezAnios;
+    return activarProtocolo;
 };
 
-console.log(obtenPacientesAsignadosAPediatriaYMenorDeDiezAnios(pacientes))
+// console.log(pacientesProtocoloUrgencia);
+console.log(activarProtocoloUrgencia(pacientes));
